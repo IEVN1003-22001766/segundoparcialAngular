@@ -1,0 +1,50 @@
+<div class="container mx-auto py-4">
+    <div class="grid grid-flow-col">
+        <div class="row">
+            <form action="">
+                <div>
+                    <h3 class="text-xl font-medium text-black">Datos Personales:</h3>
+                    <label for="nombre">Nombre:</label>
+                    <input [(ngModel)]="nombre" type="text" id="nombre" name="nombre">
+                    <br>
+                    <label for="apellido_p">Apellido Paterno:</label>
+                    <input type="text" id="apellido_p" name="apellido_p" [(ngModel)]="apellido_p" >
+                    <br>
+                    <label for="apellido_m">Apellido Materno:</label>
+                    <input type="text" id="apellido_m" name="apellido_m" [(ngModel)]="apellido_m">
+                    <br>
+                    <h3 class="text-xl font-medium text-black">Fecha de nacimiento:</h3>
+                    <label for="dia">Dia:</label>
+                    <input type="text" id="dia" name="dia" [(ngModel)]="dia">
+                    <label for="mes">Mes:</label>
+                    <input type="text" id="mes" name="mes" [(ngModel)]="mes">
+                    <label for="mes">Año:</label>
+                    <input type="text" id="anio" name="anio" [(ngModel)]="anio">
+                    <br>
+                    <h3 class="text-xl font-medium text-black">Sexo:</h3>
+                    <div>
+                        <input type="radio" id="masculino" name="genero" value="masculino"
+                            [(ngModel)]="genero">
+                        <label for="masculino">Masculino</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="femenino" name="genero" value="femenino"
+                            [(ngModel)]="genero">
+                        <label for="femenino">Femenino</label>
+                    </div>
+                </div>
+            </form>
+            <button
+                class="bg-green-700 text-white font-bold py-2 px-4 rounded"
+                type="button" (click)="calcular()">
+                Calcular
+            </button>
+        </div>
+        <div class="row">
+            <h3 class="text-xl font-medium text-black">{{mensaje}}</h3>
+            <h3 class="text-xl font-medium text-black">{{edad}}</h3>
+            <h3 class="text-xl font-medium text-black">{{signo}}</h3>
+            <img [src]="imagen" width="200px">
+        </div>
+    </div>
+</div>
