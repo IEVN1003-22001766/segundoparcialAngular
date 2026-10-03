@@ -32,7 +32,11 @@ export class Zodiaco {
       edadUser = 2026 - parseInt(this.anio);
     }
 
-    let numero = parseInt(this.anio) % 12;
+    let numero = parseInt(this.anio);
+
+    while (numero >= 12) {
+      numero -= 12;
+    }
 
     if (numero == 0) {
       logo = "https://cdn-icons-png.flaticon.com/512/1998/1998721.png"
