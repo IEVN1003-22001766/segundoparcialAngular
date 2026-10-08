@@ -8,10 +8,10 @@ import { App } from './app';
 import { Zodiaco } from './formulario/zodiaco/zodiaco';
 import { Navbar } from './navbar/navbar';
 import { Distancia } from './formulario/distancia/distancia';
-import { ListaEscuela } from './escuela/lista-escuela/lista-escuela';
+import { Cinepolis } from './cinepolis/cinepolis';
 
 @NgModule({
-  declarations: [App, Zodiaco, Navbar, Distancia, ListaEscuela],
+  declarations: [App, Zodiaco, Navbar, Distancia, Cinepolis],
   imports: [BrowserModule, FormsModule, RouterOutlet, RouterLink, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Distancia } from './formulario/distancia/distancia';
 import { Zodiaco } from './formulario/zodiaco/zodiaco';
 import { ListaEscuela } from './escuela/lista-escuela/lista-escuela'
+import { Cinepolis } from './cinepolis/cinepolis'
 
 const routes: Routes = [
   {
@@ -27,8 +28,12 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'escuela', component: ListaEscuela
+    path: 'escuela',
+    children: [
+      { path: 'lista-escuela', component: ListaEscuela }
+    ]
   },
+  { path: 'cinepolis', component: Cinepolis },
 
   { path: '', redirectTo: 'admin', pathMatch: 'full' }
 ];

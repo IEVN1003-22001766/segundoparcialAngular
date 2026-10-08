@@ -3,6 +3,4 @@ export interface Alumno {
     nombre:string
     correo:string
     materia:string
-
-    
 }
