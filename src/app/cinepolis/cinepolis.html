@@ -1,43 +1,91 @@
-<main class="mx-auto max-w-6xl">
+<main class="mx-2 max-w-7xl mx-auto p-4">
     <h1 class="text-3xl font-bold mb-6">
         Cinépolis
     </h1>
 
-    <div class="bg-blue-700 p-6 rounded-lg shadow">
-        <h2 class="text-2xl text-white font-bold mb-6">
-            Entradas
-        </h2>
-        <!-- Nombre -->
-        <div class="mb-5">
-            <label for="nombre" class="block mb-2 text-m font-medium text-white">
-                Nombre
-            </label>
-            <input type="text" id="nombre" name="nombre" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    <form [formGroup]="formulario" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-blue-900 p-6 rounded-lg shadow h-fit">
+            <h2 class="text-2xl text-white font-bold mb-6">
+                Entradas
+            </h2>
+            <!-- Nombre -->
+            <div class="mb-5">
+                <label for="nombre" class="block mb-2 text-sm font-medium text-white">
+                    Nombre
+                </label>
+                <input type="text" id="nombre" name="nombre" formControlName="nombre" required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            </div>
+            <!-- Cantidad Compradores -->
+            <div class="mb-5">
+                <label for="nCompradores" class="block mb-2 text-sm font-medium text-white">
+                    Cantidad Compradores
+                </label>
+                <input type="text" id="nCompradores" name="nCompradores" formControlName="nCompradores" required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            </div>
+            <!-- Tarjeta Cineco -->
+            <div class="mb-5">
+                <label class="block mb-2 text-sm font-medium text-white">
+                    Tarjeta Cineco
+                </label>
+                <div class="flex items-center space-x-4">
+                    <label class="flex items-center text-white cursor-pointer">
+                        <input type="radio" id="tCineteco_si" name="tCineteco" formControlName="tCineteco" value="si"
+                            class="w-4 h-4 text-blue-600 bg-gray-50 border-gray-300 focus:ring-blue-500">
+                        <span class="ml-2">Sí</span>
+                    </label>
+                    <label class="flex items-center text-white cursor-pointer">
+                        <input type="radio" id="tCineteco_no" name="tCineteco" formControlName="tCineteco" value="no"
+                            class="w-4 h-4 text-blue-600 bg-gray-50 border-gray-300 focus:ring-blue-500">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+            <!-- Cantidad de Boletos -->
+            <div class="mb-5">
+                <label for="nBoletos" class="block mb-2 text-sm font-medium text-white">
+                    Cantidad de Boletos
+                </label>
+                <input type="text" id="nBoletos" name="nBoletos" formControlName="nBoletos" required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            </div>
         </div>
-        <!-- Cantidad Compradores -->
-        <div class="mb-5">
-            <label for="nCompradores" class="block mb-2 text-m font-medium text-white">
-                Cantidad Compradores
-            </label>
-            <input type="text" id="nCompradores" name="nCompradores" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+        <div class="flex flex-col gap-4">
+            <div class="bg-blue-900 p-6 rounded-lg shadow">
+                <h2 class="text-2xl text-white font-bold mb-6">
+                    Salidas
+                </h2>
+                <div class="mb-5">
+                    <p class="text-white font-bold">{{nuevoTicket.nombre}}</p>
+                    <p class="text-white font-bold">{{nuevoTicket.nBoletos}}</p>
+                    <p class="text-white font-bold">{{txtDescuento}}</p>
+                    <p class="text-white font-bold">Total a pagar: ${{total}}</p>
+                </div>
+            </div>
+
+            <div class="bg-blue-900 p-6 rounded-lg shadow">
+                <h2 class="text-2xl text-white font-bold mb-6">
+                    Acciones
+                </h2>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button"
+                        class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 disabled:opacity-50 disabled:cursor-not-allowed">
+                        Limpiar
+                    </button>
+                    <button type="submit" (click)="procesar()"
+                        class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 disabled:opacity-50 disabled:cursor-not-allowed">
+                        Procesar
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-blue-900 p-6 rounded-lg shadow">
+                <h2 class="text-white mb-6">
+                    {{mensaje}}
+                </h2>
+            </div>
         </div>
-        <!-- Tarjeta Cineco -->
-        <div class="mb-5">
-            <label for="tCineco" class="block mb-2 text-m font-medium text-white">
-                Tarjeta Cineco
-            </label>
-            <input type="text" id="tCineco" name="tCineco" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-        </div>
-        <!-- Cantidad de Boletas -->
-        <div class="mb-5">
-            <label for="nBoletas" class="block mb-2 text-m font-medium text-white">
-                Nombre
-            </label>
-            <input type="text" id="nBoletas" name="nBoletas" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-        </div>
-    </div>
+    </form>
 </main>
