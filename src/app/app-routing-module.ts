@@ -4,6 +4,7 @@ import { Distancia } from './formulario/distancia/distancia';
 import { Zodiaco } from './formulario/zodiaco/zodiaco';
 import { ListaEscuela } from './escuela/lista-escuela/lista-escuela'
 import { Cinepolis } from './cinepolis/cinepolis'
+import { Ventas } from './cinepolis/ventas/ventas'
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
     ]
   },
   { path: 'cinepolis', component: Cinepolis },
+  { path: 'ventas', component: Ventas },
 
   { path: '', redirectTo: 'admin', pathMatch: 'full' }
 ];

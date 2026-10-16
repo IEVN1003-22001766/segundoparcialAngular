@@ -3,4 +3,6 @@ export interface Ticket {
     nCompradores: string
     tCineteco: string
     nBoletos: string
+    descuento: number
+    total: number
 }

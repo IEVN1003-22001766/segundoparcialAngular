@@ -1,0 +1,204 @@
+<main class="mx-2 max-w-7xl mx-auto p-4">
+    <form *ngIf="verEditar" [formGroup]="formulario" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-blue-900 p-6 rounded-lg shadow h-fit">
+            <h2 class="text-2xl text-white font-bold mb-6">
+                Entradas
+            </h2>
+            <!-- Nombre -->
+            <div class="mb-5">
+                <label for="nombre" class="block mb-2 text-sm font-medium text-white">
+                    Nombre
+                </label>
+                <input type="text" id="nombre" name="nombre" formControlName="nombre" required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            </div>
+            <!-- Cantidad Compradores -->
+            <div class="mb-5">
+                <label for="nCompradores" class="block mb-2 text-sm font-medium text-white">
+                    Cantidad Compradores
+                </label>
+                <input type="text" id="nCompradores" name="nCompradores" formControlName="nCompradores" required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            </div>
+            <!-- Tarjeta Cineco -->
+            <div class="mb-5">
+                <label class="block mb-2 text-sm font-medium text-white">
+                    Tarjeta Cineco
+                </label>
+                <div class="flex items-center space-x-4">
+                    <label class="flex items-center text-white cursor-pointer">
+                        <input type="radio" id="tCineteco_si" name="tCineteco" formControlName="tCineteco" value="si"
+                            class="w-4 h-4 text-blue-600 bg-gray-50 border-gray-300 focus:ring-blue-500">
+                        <span class="ml-2">Sí</span>
+                    </label>
+                    <label class="flex items-center text-white cursor-pointer">
+                        <input type="radio" id="tCineteco_no" name="tCineteco" formControlName="tCineteco" value="no"
+                            class="w-4 h-4 text-blue-600 bg-gray-50 border-gray-300 focus:ring-blue-500">
+                        <span class="ml-2">No</span>
+                    </label>
+                </div>
+            </div>
+            <!-- Cantidad de Boletos -->
+            <div class="mb-5">
+                <label for="nBoletos" class="block mb-2 text-sm font-medium text-white">
+                    Cantidad de Boletos
+                </label>
+                <input type="text" id="nBoletos" name="nBoletos" formControlName="nBoletos" required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-4">
+            <div class="bg-blue-900 p-6 rounded-lg shadow">
+                <h2 class="text-2xl text-white font-bold mb-6">
+                    Salidas
+                </h2>
+                <div class="mb-5">
+                    <p class="text-white font-bold">{{nuevoTicket.nombre}}</p>
+                    <p class="text-white font-bold">{{nuevoTicket.nBoletos}}</p>
+                    <p class="text-white font-bold">{{txtDescuento}}</p>
+                    <p class="text-white font-bold">Total a pagar: ${{total}}</p>
+                </div>
+            </div>
+
+            <div class="bg-blue-900 p-6 rounded-lg shadow">
+                <h2 class="text-2xl text-white font-bold mb-6">
+                    Acciones
+                </h2>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button"
+                        class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 disabled:opacity-50 disabled:cursor-not-allowed">
+                        Limpiar
+                    </button>
+                    <button type="submit" (click)="procesar()"
+                        class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 disabled:opacity-50 disabled:cursor-not-allowed">
+                        Actualizar
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-blue-900 p-6 rounded-lg shadow">
+                <h2 class="text-white mb-6">
+                    {{mensaje}}
+                </h2>
+            </div>
+
+
+        </div>
+    </form>
+    <br>
+    <h1 class="text-3xl font-bold mb-6">
+        Ventas en Cinépolis
+    </h1>
+
+    <button type="button" [routerLink]="['/cinepolis']"
+        class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-full text-sm px-4 py-2.5 focus:outline-none">Regresar</button>
+
+    <!-- Tabla -->
+    <div class="max-w-6xl mx-auto mt-8">
+
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+
+            <table class="w-full text-sm text-left text-gray-500">
+
+                <!-- Encabezado -->
+                <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Nombre
+                        </th>
+
+                        <th scope="col" class="px-6 py-3">
+                            Compradores
+                        </th>
+
+                        <th scope="col" class="px-6 py-3">
+                            Tarjeta Cineteco
+                        </th>
+
+                        <th scope="col" class="px-6 py-3">
+                            Cantidad Boletos
+                        </th>
+
+
+                        <th scope="col" class="px-6 py-3">
+                            Descuento (%)
+                        </th>
+
+                        <th scope="col" class="px-6 py-3">
+                            Total ($)
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+
+                        </th>
+                    </tr>
+
+                </thead>
+
+                <!-- Datos -->
+                <tbody>
+
+                    <tr *ngFor="let ticket1 of tickets let i = index"
+                        class="bg-white border-b border-gray-200 hover:bg-gray-50">
+
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            {{ ticket1.nombre }}
+                        </td>
+
+                        <td class="px-6 py-4">
+                            {{ ticket1.nCompradores }}
+                        </td>
+
+                        <td class="px-6 py-4">
+                            {{ ticket1.tCineteco }}
+                        </td>
+
+                        <td class="px-6 py-4">
+                            {{ ticket1.nBoletos }}
+                        </td>
+
+                        <td class="px-6 py-4">
+                            {{ ticket1.descuento }}
+                        </td>
+
+                        <td class="px-6 py-4">
+                            {{ ticket1.total }}
+                        </td>
+
+                        <td class="px-6 py-4">
+
+                            <div class="flex gap-2">
+
+                                <!-- Botón Editar -->
+                                <button type="button"
+                                    class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300"
+                                    (click)="editarTicket(i)">
+                                    Editar
+                                </button>
+
+                                <!-- Botón Eliminar -->
+                                <button type="button"
+                                    class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300"
+                                    (click)="eliminarTicket(i)">
+                                    Eliminar
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+
+    </div>
+</main>
